@@ -1,0 +1,23 @@
+Package: RareVariantVis
+Type: Package
+Title: Visualization of rare variants in whole genome sequencing data
+Version: 0.99.3
+Date: 2015-03-11
+Author: Tomasz Stokowy
+Maintainer: Who to complain to <tomasz.stokowy@k2.uib.no>
+Description: Genomic variants can be analyzed and visualized using many
+        tools. Unfortunately, number of tools for global interrogation
+        of variants is limited. Package RareVariantVis aims to present
+        genomic variants (especially rare ones) in a global, per
+        chromosome way. Visualization is performed in two ways -
+        standard that outputs png figures and interactive that uses
+        JavaScript d3 package. Interactive visualization allows to
+        analyze trio/family data, for example in search for causative
+        variants in rare Mendelian diseases.
+License: Artistic-2.0
+LazyData: TRUE
+Depends: googleVis, VariantAnnotation
+Suggests: knitr, AshkenazimSonChr21
+VignetteBuilder: knitr
+biocViews: GenomicVariation, Sequencing, WholeGenome
+NeedsCompilation: no
