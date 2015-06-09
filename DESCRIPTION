@@ -1,7 +1,7 @@
 Package: RareVariantVis
 Type: Package
 Title: Visualization of rare variants in whole genome sequencing data
-Version: 0.99.4
+Version: 0.99.5
 Date: 2015-03-11
 Author: Tomasz Stokowy
 Maintainer: Tomasz Stokowy <tomasz.stokowy@k2.uib.no>

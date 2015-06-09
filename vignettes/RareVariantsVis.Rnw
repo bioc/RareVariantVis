@@ -1,7 +1,6 @@
 \documentclass[a4paper]{article}
 
 \usepackage{listings}
-\usepackage{inconsolata}
 
 \title{RareVariantVis: Package for visualization of rare variants in whole genome sequencing data}
 \author{Tomasz Stokowy}
