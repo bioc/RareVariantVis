@@ -16,7 +16,8 @@ Description: Genomic variants can be analyzed and visualized using many
         variants in rare Mendelian diseases.
 License: Artistic-2.0
 LazyData: TRUE
-Depends: googleVis, VariantAnnotation, GenomicRanges
+Depends: BiocGenerics, VariantAnnotation, googleVis
+Imports: S4Vectors, IRanges, GenomeInfoDb, GenomicRanges, SummarizedExperiment
 Suggests: knitr, AshkenazimSonChr21
 VignetteBuilder: knitr
 biocViews: GenomicVariation, Sequencing, WholeGenome
