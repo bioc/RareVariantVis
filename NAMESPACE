@@ -1,3 +1,4 @@
 exportPattern("^[[:alpha:]]+")
 import(googleVis)
 import(VariantAnnotation)
+import(GenomicRanges)

@@ -1,8 +1,8 @@
 Package: RareVariantVis
 Type: Package
 Title: Visualization of rare variants in whole genome sequencing data
-Version: 0.99.5
-Date: 2015-03-11
+Version: 0.99.6
+Date: 2015-06-22
 Author: Tomasz Stokowy
 Maintainer: Tomasz Stokowy <tomasz.stokowy@k2.uib.no>
 Description: Genomic variants can be analyzed and visualized using many
@@ -16,7 +16,7 @@ Description: Genomic variants can be analyzed and visualized using many
         variants in rare Mendelian diseases.
 License: Artistic-2.0
 LazyData: TRUE
-Depends: googleVis, VariantAnnotation
+Depends: googleVis, VariantAnnotation, GenomicRanges
 Suggests: knitr, AshkenazimSonChr21
 VignetteBuilder: knitr
 biocViews: GenomicVariation, Sequencing, WholeGenome
