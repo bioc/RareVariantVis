@@ -24,7 +24,7 @@ chromosomeVis <- function(file, sampleName, chromosome, centromeres, pngWidth = 
         secondADs = sapply( geno(vcf)[["AD"]], function(n) n[2] )
         combinedADs = paste(firstADs, secondADs, sep = ",")
 
-        Table <- as.data.frame(cbind(vcf@rowData@ranges@start,
+        Table <- as.data.frame(cbind(start(rowRanges(vcf)),
                             as.character(info(vcf)[["Variant.type"]]),
                             unlist(info(vcf)[["SNP.Frequency"]]),
                             as.character(info(vcf)[["Gene.name"]]),
