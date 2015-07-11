@@ -35,13 +35,14 @@ Mateusz Garbulowski
 
 
 \examples{
-dummyMother=MotherRareVariantsChr21
-dummyFather=FatherRareVariantsChr21
-filesList=c(MotherRareVariantsChr21, SonRareVariantsChr21,
+dummyMother = MotherRareVariantsChr21
+dummyFather = FatherRareVariantsChr21
+filesList = c(MotherRareVariantsChr21, SonRareVariantsChr21,
 FatherRareVariantsChr21, dummyMother, dummyFather)
-filesOrder=c(1, 2, 3, 4, 5)
-sampleNames=c('Mother', 'Son', 'Father', 'dummyMother', 'dummyFather')
-multipleVis(filesList, filesOrder, sampleNames, 21, CentromeresHg19, inHouse=TRUE, inHouseSampNr=5)
+filesOrder = c(1, 2, 3, 4, 5)
+sampleNames = c('Mother', 'Son', 'Father', 'dummyMother', 'dummyFather')
+multipleVis(filesList, filesOrder, sampleNames, 21, centromeres = CentromeresHg19,
+inHouse = TRUE, inHouseSampNr = 5)
 }
 
 \keyword{ ~visualization }

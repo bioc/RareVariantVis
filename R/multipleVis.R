@@ -1,7 +1,7 @@
-multipleVis <- function(filesList,filesOrder=1:length(filesList),sampleNames=filesList,chromosome,centromeres,inHouse=TRUE,inHouseSampNr=5){
+multipleVis <- function(filesList, filesOrder=1:length(filesList), sampleNames = filesList, chromosome, centromeres, inHouse=TRUE, inHouseSampNr=5){
 
 
- 
+
  if(is.character(filesList[1])){
    sampleNames=sampleNames[filesOrder]
    filesList=filesList[filesOrder]
@@ -21,9 +21,9 @@ multipleVis <- function(filesList,filesOrder=1:length(filesList),sampleNames=fil
    filesList=colnames(filesData)
  }
  HeadNames=rownames(filesData)
- 
+
  cat("Input file reading...\n")
- 
+
  Scatter=c()
 AD.all=NULL;
 Start.position.all=NULL;
@@ -40,23 +40,23 @@ Reference.all=NULL;
  # Prepare data
  for(j in 1:length(filesList))
    {
-   
+
  ADs1 = as.character(AD.all[[j]])
  ADDs1 = strsplit(ADs1, ",")
  ADS1 <-t(sapply(ADDs1, '[', 1:max(sapply(ADDs1, length))))
  variation1 = as.numeric(ADS1[,2]) / (as.numeric(ADS1[,1]) + as.numeric(ADS1[,2]))
- 
+
  C1 = data.frame(as.numeric(Start.position.all[[j]]), variation1)
  colnames(C1) = c("Start.position", sampleNames[j])
- 
+
  tooltip = paste("Gene: ",as.character(Gene.name.all[[j]]),
                   "<br>Position: ", Start.position.all[[j]],
                   "<br>Alt/Depth: ", round(variation1,2),
                    sep="")
-  
+
  C1$pop.html.tooltip = tooltip
 
- 
+
  Scatter[[j]] <- gvisScatterChart(C1,
                                 options=list(
                                 title=paste(sampleNames[j],"_chr_",chromosome, sep = ""),
@@ -75,7 +75,7 @@ Reference.all=NULL;
 
 
   }
- 
+
 Scatter1=Scatter[[1]]
 
  for(k in 2:length(filesList))
@@ -95,7 +95,7 @@ if(inHouse==TRUE){
   snpref=paste(ref[thrSumVar],"/",var[thrSumVar],sep="")
   inHouseFrame=data.frame(snp[thrSumVar],snpref,varSum[thrSumVar])
   names(inHouseFrame)=c("position","snp","repetition")
-  write.table(unique(inHouseFrame[order(inHouseFrame$position),]),paste(format(today, format="%d%m%Y"),"_", "inmouseTable",".txt"), sep="\t",row.names=FALSE) 
+  write.table(unique(inHouseFrame[order(inHouseFrame$position),]),paste(format(today, format="%d%m%Y"),"_", "inHouseTable",".txt"), sep="\t",row.names=FALSE)
 }
 
 
