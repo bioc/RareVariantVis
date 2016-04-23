@@ -80,7 +80,7 @@ Currently, only one rare variant filter setting is provided:
     \item sequencing depth greater than 10
 \end{itemize}
 
-This rare variants are also reported by chromosomeVis function to the output file.
+This rare variants are also reported by chromosomeVis function to the output file. User could define his own list of variants to be excluded, for example external database variants of in-house database variants using posFilter option.
 Output file includes the same columns as input file but for rare variants only.
 It is possible that input files can include more columns than in the example data (AshkenazimSonChr21). Package was tested to work efficiently with files consisting of 100 annotations (columns).
 

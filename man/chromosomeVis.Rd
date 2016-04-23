@@ -12,7 +12,7 @@ In addition, file containing table with rare variants only is generated. Table i
 }
 \usage{
 chromosomeVis(file, sampleName, chromosome, centromeres, pngWidth,
-pngHeight, plot, frFilter, dpFilter, vcf)
+pngHeight, plot, frFilter, dpFilter, vcf, posFilter)
 }
 
 \arguments{
@@ -39,6 +39,7 @@ pngHeight, plot, frFilter, dpFilter, vcf)
          It is recommended not to change this value in the first phase of experiments.}
     \item{vcf}{logic value indicating if input file is in vcf format. Vcf is supported, however
          data frame inputs are recommended.}
+    \item{posFilter}{vector of values indicating positions of variants to be filtered out in         addition to other filtering settings (default 0). Could be used for external database or in-house database filtering.}
 }
 
 \value{

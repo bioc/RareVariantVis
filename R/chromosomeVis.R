@@ -1,4 +1,4 @@
-chromosomeVis <- function(file, sampleName, chromosome, centromeres, pngWidth = 1600, pngHeight = 1200, plot = FALSE, frFilter = 0.01, dpFilter = 10, vcf = FALSE) {
+chromosomeVis <- function(file, sampleName, chromosome, centromeres, pngWidth = 1600, pngHeight = 1200, plot = FALSE, frFilter = 0.01, dpFilter = 10, vcf = FALSE, posFilter = 0) {
 
     # input reading
     cat("Input file reading...\n")
@@ -75,7 +75,8 @@ chromosomeVis <- function(file, sampleName, chromosome, centromeres, pngWidth = 
             FirstTable$Variant.type == "Deletion - frameshift" |
             FirstTable$Variant.type == "Insertion - frameshift")
     F4 = which(DPs > dpFilter)
-    Filters = intersect(intersect(intersect(F1,F2),F3),F4)
+    F5 = which(FirstTable != posFilter)
+    Filters = intersect(intersect(intersect(intersect(F1,F2),F3),F4),F5)
 
     # moving average calculation
     MA <- movingAverage(variation, 2000)
