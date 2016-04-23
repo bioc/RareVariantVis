@@ -49,14 +49,38 @@ trioVis <- function(fileMother, fileIndex, fileFather, sampleMother, sampleIndex
     variation2 = as.numeric(ADS2[,2]) / (as.numeric(ADS2[,1]) + as.numeric(ADS2[,2]))
     variation3 = as.numeric(ADS3[,2]) / (as.numeric(ADS3[,1]) + as.numeric(ADS3[,2]))
 
-    C1 = cbind(FirstTable1$Start.position, variation1)
-    colnames(C1) = c("Start.position", "Mother")
+    polyMother = FirstTable1$Start.position
+    polyIndex  = FirstTable2$Start.position
+    polyFather = FirstTable3$Start.position
 
-    C2 = cbind(FirstTable2$Start.position, variation2)
-    colnames(C2) = c("Start.position", "Index")
+    motherPolyCount = 0
+    indexPolyCount  = 0
+    fatherPolyCount = 0
 
-    C3 = cbind(FirstTable3$Start.position, variation3)
-    colnames(C3) = c("Start.position", "Father")
+    for (i in 1:length(polyMother)){
+        motherPolyCount[i] = sum(polyMother > polyMother[i] - 100000 & polyMother < polyMother[i] + 100000)
+    }
+
+    for (i in 1:length(polyIndex)){
+        indexPolyCount[i] = sum(polyIndex > polyIndex[i] - 100000 & polyIndex < polyIndex[i] + 100000)
+    }
+
+    for (i in 1:length(polyFather)){
+        fatherPolyCount[i] = sum(polyFather > polyFather[i] - 100000 & polyFather < polyFather[i] + 100000)
+    }
+
+    motherPolyVariant = motherPolyCount > 3
+    indexPolyVariant  = indexPolyCount  > 3
+    fatherPolyVariant = fatherPolyCount > 3
+
+    C1 = cbind(FirstTable1$Start.position, variation1, motherPolyVariant)
+    colnames(C1) = c("Start.position", "Mother", "MotherPoly")
+
+    C2 = cbind(FirstTable2$Start.position, variation2, indexPolyVariant)
+    colnames(C2) = c("Start.position", "Index", "IndexPoly")
+
+    C3 = cbind(FirstTable3$Start.position, variation3, fatherPolyVariant)
+    colnames(C3) = c("Start.position", "Father", "FatherPoly")
 
     M1 = merge(C1, C2, by = "Start.position", all = TRUE)
     M2 = merge(M1, C3, by = "Start.position", all = TRUE)
@@ -64,8 +88,8 @@ trioVis <- function(fileMother, fileIndex, fileFather, sampleMother, sampleIndex
     # Inheritance
 
     Data1 = M2[,c(1,2)]
-    Data2 = M2[,c(1,3)]
-    Data3 = M2[,c(1,4)]
+    Data2 = M2[,c(1,4)]
+    Data3 = M2[,c(1,6)]
 
     Vect1 = as.character(!is.na(M2$Mother))
     Vect2 = as.character(!is.na(M2$Index))
@@ -93,17 +117,20 @@ trioVis <- function(fileMother, fileIndex, fileFather, sampleMother, sampleIndex
     tooltip1 = paste("Gene: ", gene1,
                     "<br>Position: ", Data1$Start.position,
                     "<br>Alt/Depth: ", round(Data1$Mother, 2),
+                    "<br>Problematic region: ", as.logical(M2$MotherPoly),
                     sep="")
 
     tooltip2 = paste("Gene: ", gene2,
                     "<br>Position: ", Data2$Start.position,
                     "<br>Alt/Depth: ", round(Data2$Index, 2),
+                    "<br>Problematic region: ", as.logical(M2$IndexPoly),
                     "<br>", inhe,
                     sep="")
 
     tooltip3 = paste("Gene: ", gene3,
                     "<br>Position: ", Data3$Start.position,
                     "<br>Alt/Depth: ", round(Data3$Father, 2),
+                    "<br>Problematic region: ", as.logical(M2$FatherPoly),
                     sep="")
 
 
@@ -183,8 +210,8 @@ trioVis <- function(fileMother, fileIndex, fileFather, sampleMother, sampleIndex
     geneCount = table(FirstTable2$Gene.name)
     geneCountMatches = match(as.character(FirstTable2$Gene.name), rownames(geneCount))
 
-    output = cbind(FirstTable2, inhe[which(inhe != "FALSE")], geneCount[geneCountMatches])
-    colnames(output)[c(dim(output)[2] - 1, dim(output)[2])] = c("Inheritance", "Gene Count")
+    output = cbind(FirstTable2, inhe[which(inhe != "FALSE")], indexPolyVariant, geneCount[geneCountMatches])
+    colnames(output)[c(dim(output)[2] - 2, dim(output)[2] - 1, dim(output)[2])] = c("Inheritance", "In polymorphic or problematic region", "Gene Count")
 
     write.table(output, paste("RareVariantsTrio_",
                               sampleIndex, "_chromosome_", chromosome, ".txt", sep=""), sep = "\t")
