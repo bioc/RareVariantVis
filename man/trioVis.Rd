@@ -7,7 +7,7 @@ Interactive visualization of rare variants on the chromosome, applicable for tri
 \description{
 Reads files containing table of rare variants from one chromosome and provides adequate trio visualization. Input files can be obtained from function chromosomeVis.
 Function outputs visualization html figure in current working directory. Figure depicts three samples in subfigures: mother, index and father. Subfigures illustrate variants (dots) in their genomic coordinates (x axis). Ratio of alternative reads and depth (y axis) gives information about type of variant: homozygous alternative (expected ratio 1) and heterozygous (expected ratio 0.5). Zoom to the figures is possible, by marking the region of interest with mouse left click. Right click induces zoom out and return to the original plot.
-Pointing on variants provides basic information about the variant - gene name and position on chromosome.
+Pointing on variants provides basic information about the variant - gene name and position on chromosome. Some variants are clustering, especially in polymorphic genomic regions like HLA or MUC. Some of this regions are also technical sequencing artefacts. If variant belongs to such region (has more than 3 rare non-synonymous coding variants in region 100 000 bases to the left and to the right from variant) it is denoted as problematic region variant. It is also denoted as such in output text file.
 
 }
 \usage{
