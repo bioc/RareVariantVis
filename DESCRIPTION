@@ -1,24 +1,24 @@
 Package: RareVariantVis
 Type: Package
-Title: Visualization of rare variants in whole genome sequencing data
-Version: 1.9.0
-Date: 2016-04-23
-Author: Tomasz Stokowy
+Title: A suite for analysis of rare genomic variants in whole genome sequencing data.
+Version: 2.0.1
+Date: 2017-01-23
+Author: Adam Gudys and Tomasz Stokowy
 Maintainer: Tomasz Stokowy <tomasz.stokowy@k2.uib.no>
-Description: Genomic variants can be analyzed and visualized using many
+Description: Genomic variants can be analysed and visualised using many
         tools. Unfortunately, number of tools for global interrogation
-        of variants is limited. Package RareVariantVis aims to present
-        genomic variants (especially rare ones) in a global, per
-        chromosome way. Visualization is performed in two ways -
+        of variants is limited. Second version of RareVariantVis package aims to annotate, filter and present
+        genomic single nucleotide and structural variants (especially rare ones) in a global, per
+        chromosome way. Input genomic variants can come directly from the caller - for example GATK or Speedseq. Visualization of variants is performed in two ways -
         standard that outputs png figures and interactive that uses
         JavaScript d3 package. Interactive visualization allows to
         analyze trio/family data, for example in search for causative
-        variants in rare Mendelian diseases.
+        variants in rare Mendelian diseases. The package includes homozygous region caller and allows to analyse whole human genomes in less than 30 minutes.
 License: Artistic-2.0
 LazyData: TRUE
-Depends: BiocGenerics, VariantAnnotation, googleVis
-Imports: S4Vectors, IRanges, GenomeInfoDb, GenomicRanges
-Suggests: knitr, AshkenazimSonChr21
+Depends: BiocGenerics, VariantAnnotation, googleVis, GenomicFeatures
+Imports: S4Vectors, IRanges, GenomeInfoDb, GenomicRanges, gtools, BSgenome.Hsapiens.UCSC.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene, phastCons100way.UCSC.hg19, SummarizedExperiment, VariantFiltering, DataRareVariantVis
+Suggests: knitr
 VignetteBuilder: knitr
 biocViews: GenomicVariation, Sequencing, WholeGenome
 NeedsCompilation: no
