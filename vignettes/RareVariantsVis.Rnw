@@ -1,9 +1,10 @@
 \documentclass[a4paper]{article}
 
 \usepackage{listings}
+\usepackage{indentfirst}
 
-\title{RareVariantVis: Package for visualization of rare variants in whole genome sequencing data}
-\author{Tomasz Stokowy}
+\title{RareVariantVis 2: R suite for analysis of rare variants in whole genome sequencing data.}
+\author{Adam Gudys and Tomasz Stokowy}
 
 %\VignetteIndexEntry{RareVariantVis}
 %\VignetteEngine{knitr::knitr}
@@ -13,7 +14,13 @@
 \maketitle
 
 \section*{Introduction}
+
+The search for causative genetic variants in rare diseases of presumed monogenic inheritance has been boosted by the implementation of whole genome sequencing(WGS). Analysis and visualisation of WGS data is demanding due to its size and complexity.
+To aid this challenge, we have developed a WGS data analysis suite – RareVariantVis 2. This new, significantly extended implementation of RareVariantVis (Stokowy et al., Bioinformatics 2016) annotates, filters and visualises whole human genome in less than 30 minutes. Method accepts and integrates vcf files for single nucleotide, structural and copy number variants. Proposed method was successfully used to disclose causes of three rare monogenic disorders, including one non-coding variant.
+
 This vignette was created to present how to efficiently visualize and interprete genomic variants in R. Package RareVariantVis aims to present genomic variants (especially rare ones) in a global, per chromosome way. Visualization is performed in two ways - standard that outputs png figures and interactive that uses JavaScript d3 package. Interactive visualization allows to analyze trio/family data, for example in search for causative variants in rare Mendelian diseases.
+
+This vignette presents example of Genome in a Bottle sample - Ashkenazim trio son -  (chromosome 19) which is analyzed in about 1 minute on laptop/desktop computer. Examples include reading of all chr19 variants, filtering, annotation, visualization and homozygous region calling.
 
 
 
