@@ -21,9 +21,51 @@ chromosomeVis <- function(
                                           "DataRareVariantVis")
     }
 
+    ###############################################
+    # Part 0 - prepare adnnotations
+    ###############################################
+
+    # Centromeres for hg19
+
+    url = "http://hgdownload.cse.ucsc.edu/goldenPath/hg19/database/cytoBand.txt.gz"
+    cytobands = read.delim(
+        text=readLines(gzcon(url(url))),
+        header=FALSE, sep="\t", stringsAsFactors = FALSE
+    )
+
+    cytobands_acen = cytobands[cytobands$V5 == "acen",]
+    cytobands_chr = cytobands_acen[1:dim(cytobands_acen)[1] %% 2 == 1,]
+    cytobands_start = cytobands_acen[1:dim(cytobands_acen)[1] %% 2 == 1,]$V2
+    cytobands_end =  cytobands_acen[1:dim(cytobands_acen)[1] %% 2 == 0,]$V3
+    cytobands_summary = cbind.data.frame(as.character(cytobands_chr$V1),
+                                         cytobands_start, cytobands_end, stringsAsFactors = FALSE)
+
+    colnames(cytobands_summary) = c("Chrom", "Start", "Stop")
+
+    url = "http://hgdownload.cse.ucsc.edu/goldenPath/hg19/database/chromInfo.txt.gz"
+    chromosome_lengths = read.delim(
+        text=readLines(gzcon(url(url))),
+        header=FALSE, sep="\t", stringsAsFactors = FALSE
+    )
+
+    chr_lengths = cbind(chromosome_lengths[1:24,1:2],
+                        ceiling(chromosome_lengths[1:24,2] / 10000000) * 10000000)
+    colnames(chr_lengths) = c("Chrom", "ChromLen", "WinSize")
+
+    temp_centromeres = merge(cytobands_summary, chr_lengths, by = "Chrom")
+
+    order_rows_centromeres = match(c(1:22, "X", "Y"), substr(temp_centromeres$Chrom, 4,
+                                                             nchar(as.character(temp_centromeres$Chrom))))
+
+    centromeres = temp_centromeres[order_rows_centromeres,]
+
+    # End of centromeres preparation
+
+
+
     # Annotation files
-    centromeres_file    = system.file("extdata", "CentromeresHg19.txt", package =
-                                          "DataRareVariantVis")
+    # centromeres_file    = system.file("extdata", "CentromeresHg19.txt", package =
+    #                                          "DataRareVariantVis")
     coding_regions_file = system.file("extdata",
                                       "nexterarapidcapture_exome_targetedregions_v1.2.bed",
                                       package = "DataRareVariantVis")
@@ -32,9 +74,9 @@ chromosomeVis <- function(
     uniprot_file        = system.file("extdata", "uniprot-all.txt", package =
                                           "DataRareVariantVis")
     # load annotations
-    centromeres = read.delim(centromeres_file,
-                             header = TRUE,
-                             stringsAsFactors = FALSE)
+    # centromeres = read.delim(centromeres_file,
+    #                             header = TRUE,
+    #                             stringsAsFactors = FALSE)
     anno_whole = read.delim(annotation_file,
                             header = TRUE,
                             stringsAsFactors = FALSE)
