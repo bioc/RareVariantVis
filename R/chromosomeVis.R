@@ -12,13 +12,13 @@ chromosomeVis <- function(
     sampleName = unlist(strsplit(basename(sample), '[.]'))[1]
 
     if (missing(dbSNP_file)) {
-        dbSNP_file = system.file("extdata", "All_20160601_chr19.vcf.gz", package =
-                                          "DataRareVariantVis")
+        dbSNP_file = system.file("extdata", "All_20160601_chr19_9-10.vcf.recode.vcf.gz", package =
+                                          "RareVariantVis")
     }
 
     if (missing(Exac_file)) {
-        Exac_file = system.file("extdata", "ExAC.r0.3.1.sites.vep_chr19.vcf.gz", package =
-                                          "DataRareVariantVis")
+        Exac_file = system.file("extdata", "ExAC.r0.3.1.sites.vep_chr19_9-10.vcf.recode.vcf.gz", package =
+                                          "RareVariantVis")
     }
 
     ###############################################
@@ -65,14 +65,14 @@ chromosomeVis <- function(
 
     # Annotation files
     # centromeres_file    = system.file("extdata", "CentromeresHg19.txt", package =
-    #                                          "DataRareVariantVis")
+    #                                          "RareVariantVis")
     coding_regions_file = system.file("extdata",
-                                      "nexterarapidcapture_exome_targetedregions_v1.2.bed",
-                                      package = "DataRareVariantVis")
-    annotation_file     = system.file("extdata", "UCSC_hg19_refSeq_160702.txt", package =
-                                          "DataRareVariantVis")
-    uniprot_file        = system.file("extdata", "uniprot-all.txt", package =
-                                          "DataRareVariantVis")
+                                      "nexterarapidcapture_exome_targetedregions_v1.2_chr19_9-10.bed",
+                                      package = "RareVariantVis")
+    annotation_file     = system.file("extdata", "UCSC_hg19_chr9_9-10_refSeq_160702.txt", package =
+                                          "RareVariantVis")
+    uniprot_file        = system.file("extdata", "uniprot-all_chr19_9-10.txt", package =
+                                          "RareVariantVis")
     # load annotations
     # centromeres = read.delim(centromeres_file,
     #                             header = TRUE,

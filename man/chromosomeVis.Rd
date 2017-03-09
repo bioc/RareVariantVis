@@ -39,19 +39,21 @@ Adam Gudys and Tomasz Stokowy
 \examples{
 
 # analyze chromosome 19 from example genome
-sample = system.file("extdata", "CoriellIndex_S1.vcf.gz",
-    package = "DataRareVariantVis")
+sample = system.file("extdata", "CoriellIndex_S1_chr19_9-10_S1.vcf.recode.vcf.gz",
+   package = "RareVariantVis")
 sv_sample = system.file("extdata", "CoriellIndex_S1.sv.vcf.gz",
-    package = "DataRareVariantVis")
+   package = "RareVariantVis")
 chromosomeVis(sample=sample, sv_sample=sv_sample, chromosomes=c("19"))
 
 # without sv data
-# sample = system.file("extdata", "CoriellIndex_S1.vcf.gz",
-#    package = "DataRareVariantVis")
+# sample = system.file("extdata", "CoriellIndex_S1_chr19_9-10_S1.vcf.recode.vcf.gz",
+#    package = "RareVariantVis")
 # chromosomeVis(sample=sample, chromosomes=c("19"))
 
 # analyze entire genome (use external full-genome dbSNP and ExAC)
 # it takes approximately 30 mins on a desktop computer
+# large example data can be downloaded from:
+# https://github.com/agudys/DataRareVariantVis
 # dbSNP_file = "All_20160601.vcf.gz"
 # Exac_file = "ExAC.r0.3.1.sites.vep.vcf.gz"
 # chromosomeVis(sample=sample, sv_sample=sv_sample,

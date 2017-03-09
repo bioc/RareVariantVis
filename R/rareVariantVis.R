@@ -1,6 +1,6 @@
 rareVariantVis <- function(input, outputFile, sample, chromosomes = c(as.character(1:22), "X", "Y"), append = FALSE) {
 
-    centromeres_file    = system.file("extdata", "CentromeresHg19.txt", package = "DataRareVariantVis")
+    centromeres_file    = system.file("extdata", "CentromeresHg19.txt", package = "RareVariantVis")
     centromeres = read.delim(centromeres_file,
                              header = TRUE,
                              stringsAsFactors = FALSE)

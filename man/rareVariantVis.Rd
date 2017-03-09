@@ -32,7 +32,7 @@ Adam Gudys and Tomasz Stokowy
 
 \examples{
 file = system.file("extdata", "RareVariants_CoriellIndex_S1.txt",
-    package = "DataRareVariantVis")
+    package = "RareVariantVis")
 rareVariantVis(input=file, "RareVariants_CoriellIndex_S1.html", "CorielIndex")
 }
 

@@ -10,7 +10,7 @@ callHomozygous <- function(
 
     # Annotation files
     centromeres_file    = system.file("extdata", "CentromeresHg19.txt", package =
-                                          "DataRareVariantVis")
+                                          "RareVariantVis")
 
     # load annotations
     centromeres = read.delim(centromeres_file,

@@ -33,9 +33,9 @@ Adam Gudys and Tomasz Stokowy
 
 \examples{
 file1 = system.file("extdata", "RareVariants_CoriellIndex_S1.txt",
-                    package = "DataRareVariantVis")
+                    package = "RareVariantVis")
 file2 = system.file("extdata", "RareVariants_Coriell_S2.txt",
-                    package = "DataRareVariantVis")
+                    package = "RareVariantVis")
 inputFiles = c(file1, file2)
 sampleNames = c("CoriellIndex_S1", "Coriell_S2");
 multipleVis(inputFiles, "CorielSamples.html", sampleNames, "19")

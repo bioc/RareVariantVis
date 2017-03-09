@@ -28,9 +28,9 @@ Tomasz Stokowy
 }
 
 \examples{
-sample = system.file("extdata", "CoriellIndex_S1.vcf.gz",
-                     package = "DataRareVariantVis")
-callHomozygous(sample=sample, chromosomes=c("19"))
+# sample = system.file("extdata", "CoriellIndex_S1_chr19_9-10_S1.vcf.recode.vcf.gz",
+#                      package = "RareVariantVis")
+# callHomozygous(sample=sample, chromosomes=c("19"))
 }
 
 \keyword{ ~call homozygous regions }
