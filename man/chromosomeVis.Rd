@@ -39,11 +39,11 @@ Adam Gudys and Tomasz Stokowy
 \examples{
 
 # analyze chromosome 19 from example genome
-sample = system.file("extdata", "CoriellIndex_S1_chr19_9-10_S1.vcf.recode.vcf.gz",
-   package = "RareVariantVis")
-sv_sample = system.file("extdata", "CoriellIndex_S1.sv.vcf.gz",
-   package = "RareVariantVis")
-chromosomeVis(sample=sample, sv_sample=sv_sample, chromosomes=c("19"))
+# sample = system.file("extdata", "CoriellIndex_S1_chr19_9-10_S1.vcf.recode.vcf.gz",
+#   package = "RareVariantVis")
+# sv_sample = system.file("extdata", "CoriellIndex_S1.sv.vcf.gz",
+#   package = "RareVariantVis")
+# chromosomeVis(sample=sample, sv_sample=sv_sample, chromosomes=c("19"))
 
 # without sv data
 # sample = system.file("extdata", "CoriellIndex_S1_chr19_9-10_S1.vcf.recode.vcf.gz",
