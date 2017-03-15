@@ -1,0 +1,13 @@
+citEntry(entry="article",
+         title = "RareVariantVis: new tool for visualization of causative variants in rare monogenic disorders using whole genome sequencing data",
+         author = personList( as.person(“Tomasz Stokowy“),
+         year = 2016,
+         journal = “Bioinformatics”,
+         doi = "10.1093/bioinformatics/btw359",
+         volume = 32,
+         issue = 12,
+         pages = 3018,
+         textVersion = 
+         paste(“Stokowy T. et al., (2016):”, 
+               "RareVariantVis: new tool for visualization of causative variants in rare monogenic disorders using whole genome sequencing data.",
+                “Bioinformatics” ) )
