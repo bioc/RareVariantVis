@@ -1,0 +1,6 @@
+bibentry(bibtype = "Manual",
+         title = "RareVariantVis: new tool for visualization of causative variants in rare monogenic disorders using whole genome sequencing data.",
+         author = c(person("Tomasz", "Stokowy")),
+         journal = "Bioinformatics",
+         year = "2016",
+         url = "https://www.ncbi.nlm.nih.gov/pubmed/27288501")
