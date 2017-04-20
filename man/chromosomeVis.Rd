@@ -24,7 +24,7 @@ chromosomeVis(sample, sv_sample, dbSNP_file, Exac_file, chromosomes, pngWidth, p
     \item{pngWidth}{A number indicating pixel width of output png files. Default is 1600.}
     \item{pngHeight}{A number indicating pixel height of output png files. Default is 1200.}
     \item{caller}{A string indicating vcf caller. Default is "speedseq", supports "GATK"}
-    \item{MA_Window}{A number indicating window size for moving average function. Recommended value for genome is 2000, for exome is 20. Default is 2000.}
+    \item{MA_Window}{A number indicating window size for moving average function. Recommended value for genome is 2000, for exome is 20. Default is 1000.}
 
 }
 
@@ -39,11 +39,11 @@ Adam Gudys and Tomasz Stokowy
 \examples{
 
 # analyze chromosome 19 from example genome
-# sample = system.file("extdata", "CoriellIndex_S1_chr19_9-10_S1.vcf.recode.vcf.gz",
-#   package = "RareVariantVis")
-# sv_sample = system.file("extdata", "CoriellIndex_S1.sv.vcf.gz",
-#   package = "RareVariantVis")
-# chromosomeVis(sample=sample, sv_sample=sv_sample, chromosomes=c("19"))
+sample = system.file("extdata", "CoriellIndex_S1_chr19_9-10_S1.vcf.recode.vcf.gz",
+  package = "RareVariantVis")
+sv_sample = system.file("extdata", "CoriellIndex_S1.sv.vcf.gz",
+  package = "RareVariantVis")
+chromosomeVis(sample=sample, sv_sample=sv_sample, chromosomes=c("19"))
 
 # without sv data
 # sample = system.file("extdata", "CoriellIndex_S1_chr19_9-10_S1.vcf.recode.vcf.gz",
@@ -52,13 +52,13 @@ Adam Gudys and Tomasz Stokowy
 
 # analyze entire genome (use external full-genome dbSNP and ExAC)
 # it takes approximately 30 mins on a desktop computer
-# large example data can be downloaded from:
+# large example data  and all necessary hg19 references can be downloaded from:
 # https://github.com/agudys/DataRareVariantVis
 # dbSNP_file = "All_20160601.vcf.gz"
 # Exac_file = "ExAC.r0.3.1.sites.vep.vcf.gz"
 # chromosomeVis(sample=sample, sv_sample=sv_sample,
 #     dbSNP_file=dbSNP_file, Exac_file=Exac_file,
-#     chromosomes=c(as.character(1:22), "X", "Y"))
+#     chromosomes=c(as.character(1:22), "X", "Y"), MA_Window = 2000)
 
 
 }

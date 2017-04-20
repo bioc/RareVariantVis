@@ -2,7 +2,7 @@ callHomozygous <- function(
     sample,
     chromosomes,
     caller = "speedseq",
-    MA_Window = 2000,
+    MA_Window = 1000,
     HMZ_length = 100000,
     min_n_HMZ = 20) {
 

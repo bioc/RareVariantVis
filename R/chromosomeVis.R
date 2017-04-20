@@ -7,7 +7,7 @@ chromosomeVis <- function(
     pngWidth = 1600,
     pngHeight = 1200,
     caller = "speedseq",
-    MA_Window = 2000) {
+    MA_Window = 1000) {
 
     sampleName = unlist(strsplit(basename(sample), '[.]'))[1]
 
@@ -396,7 +396,7 @@ chromosomeVis <- function(
 
             if (length(final_positions) > 0) {
                 # get conservation scores
-                conservations =  scores(phastCons100way.UCSC.hg19,
+                conservations =  scores(phastCons100way.UCSC.hg19, scores.only=TRUE,
                                         GRanges(
                                             seqnames = paste0("chr", chromosome) ,
                                             IRanges(start = final_positions, width = 1)

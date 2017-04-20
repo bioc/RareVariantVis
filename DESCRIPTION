@@ -1,21 +1,24 @@
 Package: RareVariantVis
 Type: Package
 Title: A suite for analysis of rare genomic variants in whole genome sequencing data
-Version: 2.0.14
+Version: 2.1.0
 Date: 2017-02-21
 Author: Adam Gudys and Tomasz Stokowy
 Maintainer: Tomasz Stokowy <tomasz.stokowy@k2.uib.no>
-Description: Second version of RareVariantVis package aims to annotate, filter and present
-        genomic single nucleotide and structural variants (especially rare ones) in a global, per
-        chromosome way. It accepts variants directly from caller - for example GATK or Speedseq. Output of package are lists of variants together with adequate visualization. Visualization of variants is performed in two ways -
+Description: Second version of RareVariantVis package aims to provide comprehensive information about rare variants for your genome data. 
+        It annotates, filters and presents genomic variants (especially rare ones) in a global, per
+        chromosome way. Large structural variants, including copy number variants are also supported. Package accepts variants directly from variant caller - for example GATK or Speedseq. 
+        Output of package are lists of variants together with adequate visualization. 
+        Visualization of variants is performed in two ways -
         standard that outputs png figures and interactive that uses
         JavaScript d3 package. Interactive visualization allows to
         analyze trio/family data, for example in search for causative
-        variants in rare Mendelian diseases. The package includes homozygous region caller and allows to analyse whole human genomes in less than 30 minutes.
+        variants in rare Mendelian diseases, in point-and-click interface. The package includes homozygous region caller and allows to analyse whole human genomes in less than 30 minutes on a desktop computer.
+        RareVariantVis disclosed novel causes of several rare monogenic disorders, including one with non-coding causative variant - keratolythic winter erythema.
 License: Artistic-2.0
 LazyData: TRUE
 Depends: BiocGenerics, VariantAnnotation, googleVis, GenomicFeatures
-Imports: S4Vectors, IRanges, GenomeInfoDb, GenomicRanges, gtools, BSgenome.Hsapiens.UCSC.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene, phastCons100way.UCSC.hg19, SummarizedExperiment, VariantFiltering
+Imports: S4Vectors, IRanges, GenomeInfoDb, GenomicRanges, gtools, BSgenome.Hsapiens.UCSC.hg19, TxDb.Hsapiens.UCSC.hg19.knownGene, phastCons100way.UCSC.hg19, SummarizedExperiment, GenomicScores
 Suggests: knitr
 VignetteBuilder: knitr
 biocViews: GenomicVariation, Sequencing, WholeGenome
