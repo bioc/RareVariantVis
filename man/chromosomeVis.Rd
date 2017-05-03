@@ -12,7 +12,7 @@ In addition, files containing table with rare SNV and SV variants only are gener
 }
 
 \usage{
-chromosomeVis(sample, sv_sample, dbSNP_file, Exac_file, chromosomes, pngWidth, pngHeight, caller, MA_Window)
+chromosomeVis(sample, sv_sample, dbSNP_file, Exac_file, chromosomes, pngWidth, pngHeight, caller, MA_Window, coding_regions_file, annotation_file, uniprot_file)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -25,6 +25,9 @@ chromosomeVis(sample, sv_sample, dbSNP_file, Exac_file, chromosomes, pngWidth, p
     \item{pngHeight}{A number indicating pixel height of output png files. Default is 1200.}
     \item{caller}{A string indicating vcf caller. Default is "speedseq", supports "GATK"}
     \item{MA_Window}{A number indicating window size for moving average function. Recommended value for genome is 2000, for exome is 20. Default is 1000.}
+    \item{coding_regions_file}{A bed file indicating coding regions}
+    \item{annotation_file}{Text file indicating positions of the genes (from UCSC)}
+    \item{uniprot_file}{Text file indicating gene functions and related diseases (from Uniprot)}
 
 }
 

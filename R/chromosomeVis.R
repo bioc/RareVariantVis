@@ -7,7 +7,15 @@ chromosomeVis <- function(
     pngWidth = 1600,
     pngHeight = 1200,
     caller = "speedseq",
-    MA_Window = 1000) {
+    MA_Window = 1000,
+    coding_regions_file = system.file("extdata", "nexterarapidcapture_exome_targetedregions_v1.2_chr19_9-10.bed",
+       package = "RareVariantVis"),
+    annotation_file = system.file("extdata", "UCSC_hg19_chr9_9-10_refSeq_160702.txt",
+       package = "RareVariantVis"),
+    uniprot_file = system.file("extdata", "uniprot-all_chr19_9-10.txt",
+       package = "RareVariantVis")
+    ) {
+
 
     sampleName = unlist(strsplit(basename(sample), '[.]'))[1]
 
@@ -66,13 +74,13 @@ chromosomeVis <- function(
     # Annotation files
     # centromeres_file    = system.file("extdata", "CentromeresHg19.txt", package =
     #                                          "RareVariantVis")
-    coding_regions_file = system.file("extdata",
-                                      "nexterarapidcapture_exome_targetedregions_v1.2_chr19_9-10.bed",
-                                      package = "RareVariantVis")
-    annotation_file     = system.file("extdata", "UCSC_hg19_chr9_9-10_refSeq_160702.txt", package =
-                                          "RareVariantVis")
-    uniprot_file        = system.file("extdata", "uniprot-all_chr19_9-10.txt", package =
-                                          "RareVariantVis")
+    # coding_regions_file = system.file("extdata",
+    #                                  "nexterarapidcapture_exome_targetedregions_v1.2_chr19_9-10.bed",
+    #                                  package = "RareVariantVis")
+    # annotation_file     = system.file("extdata", "UCSC_hg19_chr9_9-10_refSeq_160702.txt", package =
+    #                                      "RareVariantVis")
+    # uniprot_file        = system.file("extdata", "uniprot-all_chr19_9-10.txt", package =
+    #                                      "RareVariantVis")
     # load annotations
     # centromeres = read.delim(centromeres_file,
     #                             header = TRUE,
