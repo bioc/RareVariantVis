@@ -527,7 +527,7 @@ chromosomeVis <- function(
                                 complex_table = rbind(complex_table, unlist(row))
                             }
                         } else {
-                            row = c(row_left, rep(NA, 13))
+                            row = c(unlist(row_left), rep(NA, 13))
                             complex_table = rbind(complex_table, row)
                         }
 
