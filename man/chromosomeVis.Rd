@@ -61,7 +61,10 @@ chromosomeVis(sample=sample, sv_sample=sv_sample, chromosomes=c("19"))
 # Exac_file = "ExAC.r0.3.1.sites.vep.vcf.gz"
 # chromosomeVis(sample=sample, sv_sample=sv_sample,
 #     dbSNP_file=dbSNP_file, Exac_file=Exac_file,
-#     chromosomes=c(as.character(1:22), "X", "Y"), MA_Window = 2000)
+#     chromosomes=c(as.character(1:22), "X", "Y"), MA_Window = 2000,
+# coding_regions_file = "nexterarapidcapture_exome_targetedregions_v1.2.bed",
+# annotation_file = "UCSC_hg19_refSeq_160702.txt",
+# uniprot_file = "uniprot-all.txt")
 
 
 }
