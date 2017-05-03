@@ -465,7 +465,7 @@ chromosomeVis <- function(
                             final_table = rbind(final_table, unlist(row))
                         }
                     } else {
-                        row = c(row_left, rep(NA, dim(final_table)[2] - 2))
+                        row = c(row_left, rep(NA, 13))
                         final_table = rbind(final_table, row)
                     }
 
@@ -476,63 +476,63 @@ chromosomeVis <- function(
                 # Part 6b - complex variants
                 ###############################################
 
-                # # find genes containing analysed positions
-                # intervals_start = findInterval(complex_positions, anno$txStart[ordering_start])
-                # intervals_end = findInterval(complex_positions, anno$txEnd[ordering_end])
-                #
-                # if (length(complex_positions) > 0) {
-                #
-                #     # analyse all positions
-                #     for (i in 1:length(complex_positions)) {
-                #         row_left = list(
-                #             chromosome,
-                #             complex_positions[i]
-                #         )
-                #
-                #         starting_before = ordering_start[1:intervals_start[i]]
-                #         ending_after = ordering_end[(intervals_end[i] + 1):length(ordering_end)]
-                #         common = intersect(starting_before, ending_after)
-                #
-                #         # proceed only when position intersects with some gene
-                #         if (length(common) > 0) {
-                #             uniqueMask = !duplicated(anno[common,]$name2)
-                #
-                #             uniqueCommon = common[uniqueMask]
-                #
-                #             # for all genes containing the position
-                #             for (ig in 1:length(uniqueCommon)) {
-                #                 # extract gene name
-                #                 gene_id = uniqueCommon[ig]
-                #
-                #                 gene = anno$name2[gene_id]
-                #
-                #                 exon_starts = as.numeric(unlist(
-                #                     strsplit(anno$exonStarts[gene_id], split = ",")
-                #                 ))
-                #                 exon_ends = as.numeric(unlist(
-                #                     strsplit(anno$exonEnds[gene_id], split = ",")
-                #                 ))
-                #
-                #                 gene_ranges = c(rbind(exon_starts, exon_ends)) # interleaved vector of low and high exon borders
-                #                 interval = findInterval(complex_positions[i], gene_ranges)
-                #
-                #                 exon = (interval %% 2 == 1)
-                #                 uniprot_row = uniprot[which(uniprot$Gene.names...primary.. == anno[uniqueCommon[ig], ]$name2),]
-                #
-                #                 if (dim(uniprot_row)[1] == 0) {
-                #                     uniprot_row = rep(NA, 11)
-                #                 }
-                #
-                #                 row = c(row_left, gene, exon, uniprot_row)
-                #                 complex_table = rbind(complex_table, unlist(row))
-                #             }
-                #         } else {
-                #             row = c(row_left, rep(NA, 13))
-                #             complex_table = rbind(complex_table, row)
-                #         }
-                #
-                #     } # end position loop
-                # }
+                # find genes containing analysed positions
+                intervals_start = findInterval(complex_positions, anno$txStart[ordering_start])
+                intervals_end = findInterval(complex_positions, anno$txEnd[ordering_end])
+
+                if (length(complex_positions) > 0) {
+
+                    # analyse all positions
+                    for (i in 1:length(complex_positions)) {
+                        row_left = list(
+                            chromosome,
+                            complex_positions[i]
+                        )
+
+                        starting_before = ordering_start[1:intervals_start[i]]
+                        ending_after = ordering_end[(intervals_end[i] + 1):length(ordering_end)]
+                        common = intersect(starting_before, ending_after)
+
+                        # proceed only when position intersects with some gene
+                        if (length(common) > 0) {
+                            uniqueMask = !duplicated(anno[common,]$name2)
+
+                            uniqueCommon = common[uniqueMask]
+
+                            # for all genes containing the position
+                            for (ig in 1:length(uniqueCommon)) {
+                                # extract gene name
+                                gene_id = uniqueCommon[ig]
+
+                                gene = anno$name2[gene_id]
+
+                                exon_starts = as.numeric(unlist(
+                                    strsplit(anno$exonStarts[gene_id], split = ",")
+                                ))
+                                exon_ends = as.numeric(unlist(
+                                    strsplit(anno$exonEnds[gene_id], split = ",")
+                                ))
+
+                                gene_ranges = c(rbind(exon_starts, exon_ends)) # interleaved vector of low and high exon borders
+                                interval = findInterval(complex_positions[i], gene_ranges)
+
+                                exon = (interval %% 2 == 1)
+                                uniprot_row = uniprot[which(uniprot$Gene.names...primary.. == anno[uniqueCommon[ig], ]$name2),]
+
+                                if (dim(uniprot_row)[1] == 0) {
+                                    uniprot_row = rep(NA, 11)
+                                }
+
+                                row = c(row_left, gene, exon, uniprot_row)
+                                complex_table = rbind(complex_table, unlist(row))
+                            }
+                        } else {
+                            row = c(row_left, rep(NA, 13))
+                            complex_table = rbind(complex_table, row)
+                        }
+
+                    } # end position loop
+                }
             }
         }
 
@@ -833,18 +833,18 @@ chromosomeVis <- function(
         quote = FALSE
     )
 
-    # complex_table[complex_table == ""] = NA
-    # complex_table = complex_table[-1,] # remove dummy first row
-    #
-    #
-    # # write to output
-    # write.table(
-    #     complex_table,
-    #     paste0("ComplexVariants_", sampleName, ".txt"),
-    #     sep = "\t",
-    #     row.names = FALSE,
-    #     quote = FALSE
-    # )
+    complex_table[complex_table == ""] = NA
+    complex_table = complex_table[-1,] # remove dummy first row
+
+
+    # write to output
+    write.table(
+        complex_table,
+        paste0("ComplexVariants_", sampleName, ".txt"),
+        sep = "\t",
+        row.names = FALSE,
+        quote = FALSE
+    )
 
 
     if (!missing(sv_sample)) {
