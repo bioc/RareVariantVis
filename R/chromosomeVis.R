@@ -404,7 +404,7 @@ chromosomeVis <- function(
 
             if (length(final_positions) > 0) {
                 # get conservation scores
-                conservations =  scores(phastCons100way.UCSC.hg19, scores.only=TRUE,
+                conservations =  score(phastCons100way.UCSC.hg19,
                                         GRanges(
                                             seqnames = paste0("chr", chromosome) ,
                                             IRanges(start = final_positions, width = 1)
