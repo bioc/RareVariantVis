@@ -1,7 +1,7 @@
 Package: RareVariantVis
 Type: Package
 Title: A suite for analysis of rare genomic variants in whole genome sequencing data
-Version: 2.17.0
+Version: 2.18.0
 Date: 2018-04-15
 Author: Adam Gudys and Tomasz Stokowy
 Maintainer: Tomasz Stokowy <tomasz.stokowy@k2.uib.no>
